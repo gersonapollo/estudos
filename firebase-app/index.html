@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Page Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+</head>
+<body>
+    <main>
+        <div class="text-center">
+            <button type="button" class="btn btn-primary" onclick="criarCard()">Adicionar Card</button>
+        </div>
+        <div class="card-container">
+
+        </div>
+    </main>
+
+
+
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/6.4.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.4.2/firebase-database.js"></script>
+    <script>
+            // Your web app's Firebase configuration
+            var firebaseConfig = {
+              apiKey: "AIzaSyDOO9Zrk4DLP2BnXD-aS0aExOpHSWOs12w",
+              authDomain: "fir-app-exemple.firebaseapp.com",
+              databaseURL: "https://fir-app-exemple.firebaseio.com",
+              projectId: "fir-app-exemple",
+              storageBucket: "",
+              messagingSenderId: "971022050740",
+              appId: "1:971022050740:web:a63eaff77de0afd8"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+          </script>
+    
+    
+    <script src='main.js'></script>
+</body>
+</html>
