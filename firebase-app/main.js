@@ -1,13 +1,23 @@
-var CARD_CONTAINER = document.getElementsByClassName("card-container")[0];
-var NOMES = ["Teste","Gerson","Marina","Jananina","Lucas","Julia","Eduardo","Cassia"];
+var CARD_CONTAINER = document.getElementsByClassName('card-container')[0];
+var NOMES = ['Teste','Gerson','Marina','Jananina','Lucas','Julia','Eduardo','Cassia'];
 var cards = [];
+var ref = firebase.database().ref('card/');
 
 function criarCard(){
     var card = {
         nome: NOMES[Math.floor(Math.random() * NOMES.length -1)],
-        idade: Math.floor(math.random() * 22 + 18),
-        curtidas: 0;
-    }
+        idade: Math.floor(Math.random() * 22 + 18),
+        curtidas: 0
+    };
+
+    // ref.child(card.nome).set(card).then(() => {
+    //     console.log("Adicionando: " + card.nome);
+    //     adicionaCardTela(card);
+    // });
+    ref.push().set(card).then(() => {
+        console.log("Adicionando: " + card.nome);
+        adicionaCardTela(card);
+    });
 }
 
 function deletar(id){
@@ -40,8 +50,8 @@ function adicionaCardTela(informação){
 
     let button_add = document.createElement("button");
     button_add.classList.add('btn', 'btn-link', 'col-3')
-    button_add.setAttribute('onClick', "Curtir("+ informação.id + ")");
-    button_add.innerText('+');
+    button_add.setAttribute('onClick', "Curtir('"+ informação.id + "')");
+    button_add.innerText = '+';
     inner.appendChild(button_add);
 
     let counter = document.createElement('span');
@@ -50,15 +60,15 @@ function adicionaCardTela(informação){
     inner.appendChild(counter);
 
     let button_sub = document.createElement('button');
-    button_add.classList.add('btn', 'btn-link', 'col-3')
-    button_add.setAttribute('onClick', "Descurtir("+ informação.id + ")");
-    button_add.innerText('-');
+    button_sub.classList.add('btn', 'btn-link', 'col-3')
+    button_sub.setAttribute('onClick', "Descurtir('"+ informação.id + "')");
+    button_sub.innerText = '-';
     inner.appendChild(button_sub);
 
     let button_del = document.createElement('button');
     button_del.classList.add('btn', 'btn-danger', 'col-3');
-    button_add.setAttribute('onClick', "Deletar("+ informação.id + ")");
-    button_add.innerText('x');
+    button_del.setAttribute('onClick', "Deletar('"+ informação.id + "')");
+    button_del.innerText = 'Apagar';
     inner.appendChild(button_del);
 
     let card = document.createElement('div');
