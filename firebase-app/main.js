@@ -32,7 +32,13 @@ function descurtir(id){
 
 }
 
-document.addEventListener("DOMContaintLoaded", function(){
+document.addEventListener("DOMContentLoaded", function(){
+    ref.once('value').then(snapshot => {
+        console.log(snapshot.val());
+        snapshot.forEach(value => {
+            adicionaCardTela(value.val());
+        })
+    })
 
 });
 
